@@ -203,7 +203,7 @@ function pushUpdatesToClients()
 	}
 }
 
-var PLAYING {
+var PLAYING = {
 
 	activate : function(client) {
 				
@@ -214,7 +214,7 @@ var PLAYING {
 	}
 };
 
-var RESTARTING {
+var RESTARTING = {
 	activate : function(client) {
 		boat.reset();
 		// Send info to players to reset
