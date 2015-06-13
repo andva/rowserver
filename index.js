@@ -189,7 +189,7 @@ var PLAYING = {
 
 	activate : function(client) {
 				
-	}
+	},
 
 	deactivate : function(client) {
 
@@ -201,7 +201,7 @@ var RESTARTING = {
 		boat.reset();
 		// Send info to players to reset
 
-	}
+	},
 
 	deactivate : function(client) {
 
