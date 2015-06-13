@@ -228,7 +228,7 @@ setInterval(function()
 
 // Run code with a given interval
 function log(msg) {
-    if (debug) {
+  //  if (debug) {
         console.log("SRV: " + msg);
-    }
+   // }
 }
