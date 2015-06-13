@@ -209,7 +209,7 @@ var RESTARTING = {
 }
 
 try {
-	wws.on("connection", function(connection){
+	wss.on("connection", function(connection){
 		addPlayer(connection);
 		onCloseConnection(connection);
 		onMessage(connection);
