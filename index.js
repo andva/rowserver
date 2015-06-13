@@ -141,7 +141,7 @@ function onMessage(connection)
 		{
 			connection.rowForce = message.rowForce;
 		}
-	}
+	});
 }
 
 function calculateBoatMovement()
@@ -231,7 +231,7 @@ try {
 		addPlayer(connection);
 		onCloseConnection(connection);
 		onMessage(connection);
-	})
+	});
 } catch (e) {
 	log(e);
 }
