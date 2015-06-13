@@ -111,7 +111,7 @@ function onCloseConnection(connection)
 			{
 				connections[i].send(JSON.stringify({
 					message_removePlayer:{
-						uuid:uuid
+						nrPlayers:connections.length
 					}
 				}));
 			}
@@ -153,17 +153,7 @@ function calculateBoatMovement()
 			totalForce[1] += left[1] / connections.length;
 		}
 	}
-	// Total number of people rowing at the moment
-	for (var i = 0; i < connections.length; i++)
-	{
-		connections[i].send(JSON.stringify(
-		{
-			message_boatUpdate:{
-				boatPos : boat.pos,
-				boatRot : boat.rotation
-			}
-		}));
-	}
+	
 }
 
 function pushUpdatesToClients()
@@ -176,9 +166,10 @@ function pushUpdatesToClients()
 		IDs[i] = connections[i].uuid;
 	}
 	var jsonObj = JSON.stringify({
-		playerPositions:{
-			nrPlayers:connections.length,
-			IDs:IDs}});
+		message_boatUpdate:{
+			boatPos : boat.pos,
+			boatRot : boat.rotation}
+		});
 	for (var i = 0; i < connections.length; i++)
 	{
 		if (connections[i].readyState)
