@@ -152,7 +152,7 @@ function calculateBoatMovement()
 	// Total number of people rowing at the moment
 	for (var i = 0; i < connections.length; i++)
 	{
-		newConnection.send(JSON.stringify(
+		connections[i].send(JSON.stringify(
 		{
 			message_boatUpdate:{
 				boatPos : boat.pos,
