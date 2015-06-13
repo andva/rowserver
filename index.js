@@ -173,8 +173,7 @@ function pushUpdatesToClients()
 	}
 	var jsonObj = JSON.stringify({
 		playerPositions:{
-			nrPlayers:positions.length,
-			positions:positions,
+			nrPlayers:connections.length,
 			IDs:IDs}});
 	for (var i = 0; i < connections.length; i++)
 	{
