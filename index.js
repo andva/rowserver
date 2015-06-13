@@ -1,38 +1,22 @@
-/*jshint node:true*/
+var WebSocketServer = require("ws").Server
+var http = require("http")
+var express = require("express")
+var app = express()
+var port = process.env.PORT || 5000
 
-//------------------------------------------------------------------------------
-// node.js starter application for Bluemix
-//------------------------------------------------------------------------------
+app.use(express.static(__dirname + "/"))
 
-// This application uses express as it's web server
-// for more info, see: http://expressjs.com
-var express = require('express');
-var http = require("http");
-var app = express();
-var port = 5000;
-var debug = true;
+var server = http.createServer(app)
+server.listen(port)
 
-var server = http.createServer(app);
-//server.listen(port);
+console.log("http server listening on %d", port)
 
-// cfenv provides access to your Cloud Foundry environment
-// for more info, see: https://www.npmjs.com/package/cfenv
-var cfenv = require('cfenv');
+var connections = [];
 
-// create a new express server
-// serve the files out of ./public as our main files
-app.use(express.static(__dirname + '/public'));
+var uuid = 0;
 
-// get the app environment from Cloud Foundry
-var appEnv = cfenv.getAppEnv();
-
-// start server on the specified port and binding host
-app.listen(appEnv.port, appEnv.bind, function() {
-	// print a message when the server starts listening
-	log("server starting on " + appEnv.url);
-	var wss = new WebSocketServer({server: server});
-	console.log("websocket server created");
-});
+var wss = new WebSocketServer({server: server})
+console.log("websocket server created")
 
 var ROW_NONE = 0;
 var ROW_LEFT_PADDLE = 1;
@@ -51,8 +35,6 @@ var boat = {
 	}
 }
 
-// Variable responsible for holding all connections
-var connections = [];
 
 // Storing game states
 var game = {
