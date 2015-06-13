@@ -77,7 +77,8 @@ function addPlayer(newConnection)
 		}
 	}
 
-	newConnection.send(JSON.stringify(
+	if (newConnection.readyState)
+		newConnection.send(JSON.stringify(
 	{
 		message_initPlayer:{
 			seatNr:connections.length,
