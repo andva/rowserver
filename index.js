@@ -53,40 +53,43 @@ function activateState(state) {
 // Add a player and emit this to everyone
 function addPlayer(newConnection)
 {
-	newConnection.uuid = game.uuid;
-	newConnection.nick = "UNKNOWN";
-	newConnection.row = ROW_NONE;
-
-	console.log('Adding player (' +game.uuid+ ')');
-
-	var otherPlayers = [];
-	var names = [];
-
-	// Tell others a new person connected
-	for (var i = 0; i < connections.length; i++)
-	{
-		otherPlayers[i] = connections[i].uuid;
-		names[i] = connections[i].nick;
-		if (connections[i].readyState)
-		{
-			connections[i].send(JSON.stringify({
-				message_addPlayer:{
-					nrPlayers:connections.length + 1
-				}
-			}));
-		}
-	}
-
 	if (newConnection.readyState)
-		newConnection.send(JSON.stringify(
 	{
-		message_initPlayer:{
-			seatNr:connections.length,
-			nrPlayers:connections.length + 1
+		newConnection.uuid = game.uuid;
+		newConnection.nick = "UNKNOWN";
+		newConnection.row = ROW_NONE;
+
+		console.log('Adding player (' +game.uuid+ ')');
+
+		var otherPlayers = [];
+		var names = [];
+
+		// Tell others a new person connected
+		for (var i = 0; i < connections.length; i++)
+		{
+			otherPlayers[i] = connections[i].uuid;
+			names[i] = connections[i].nick;
+			if (connections[i].readyState)
+			{
+				connections[i].send(JSON.stringify({
+					message_addPlayer:{
+						nrPlayers:connections.length + 1
+					}
+				}));
+			}
 		}
-	}));
-	connections.push(newConnection);
-	game.uuid += 1;
+
+	
+		newConnection.send(JSON.stringify(
+		{
+			message_initPlayer:{
+				seatNr:connections.length,
+				nrPlayers:connections.length + 1
+			}
+		}));
+		connections.push(newConnection);
+		game.uuid += 1;
+	}
 }
 
 function onCloseConnection(connection)
