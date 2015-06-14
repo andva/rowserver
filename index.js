@@ -119,6 +119,7 @@ function onMessage(connection)
 {
 	connection.on("message", function(data) {
 		var message = JSON.parse(data);
+		log('msg:', message);
 		if (message.rowForce)
 		{
 			log('Row force!!');
