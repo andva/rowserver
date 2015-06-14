@@ -53,7 +53,7 @@ function addPlayer(newConnection)
 	{
 		newConnection.uuid = game.uuid;
 		newConnection.nick = "UNKNOWN";
-		newConnection.row = [0,0];
+		newConnection.rowForce = [0,0];
 
 		console.log('Adding player (' +game.uuid+ ')');
 
