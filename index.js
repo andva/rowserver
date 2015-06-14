@@ -76,7 +76,7 @@ function addPlayer(newConnection)
 		}
 
 		if (connections.length == 0) {
-			activateState(PLAYING);
+			//activateState(PLAYING);
 		}
 		newConnection.send(JSON.stringify(
 		{
@@ -116,7 +116,7 @@ function onCloseConnection(connection)
 		}
 		if (connections.length == 0)
 		{
-			activateState(RESTARTING);
+			//activateState(RESTARTING);
 		}
 	});
 }
