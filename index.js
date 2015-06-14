@@ -132,7 +132,7 @@ function onMessage(connection)
 		log('msg_applyForce ', message.rowForce);
 		connection.rowForce[0] = message.rowForce[0];
 		connection.rowForce[1] = message.rowForce[1];
-	})
+	});
 }
 
 function calculateBoatMovement()
