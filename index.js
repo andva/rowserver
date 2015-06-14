@@ -120,10 +120,11 @@ function onMessage(connection)
 	connection.on("message", function(data) {
 		var message = JSON.parse(data);
 		log('msg:', message , " ", data);
-		if (message.rowForce)
+		if (message.rowForceX)
 		{
 			log('Row force!!');
-			connection.rowForce = message.rowForce;
+			connection.rowForce[0] = message.rowForceX;
+			connection.rowForce[1] = message.rowForceY;
 		}
 	});
 }
