@@ -20,8 +20,6 @@ var uuid = 0;
 var wss = new WebSocketServer({server: server})
 log("websocket server created")
 
-var 
-
 var boat = {
 	position : [0, 0],
 	rotation : 0,
