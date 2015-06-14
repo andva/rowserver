@@ -235,7 +235,10 @@ setInterval(function()
 		calculateBoatMovement();
 		pushUpdatesToClients();
 	}
-	log("boat", boat.position[0], ' ', boat.position[1]);
+	if (boat != undefined)
+		log("boat", boat.position[0], ' ', boat.position[1]);
+	else
+		log("boat undefined");
 }, 500);
 
 // Run code with a given interval
