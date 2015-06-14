@@ -119,15 +119,13 @@ function onMessage(connection)
 {
 	connection.on("message", function(data) {
 		var message = JSON.parse(data);
-		log('msg:', message);
-		log('data:', data);
-		log('rfx', message.rowForceX);
+		log('rfx', message.applyForce);
 		log('sad', message.asd);
-		if (message.rowForceX)
+		if (message.applyForce)
 		{
 			log('Row force!!');
-			connection.rowForce[0] = message.rowForceX;
-			connection.rowForce[1] = message.rowForceY;
+			connection.rowForce[0] = message.applyForce.rowForceX;
+			connection.rowForce[1] = message.applyForce.rowForceY;
 		}
 		if (message.asd == 1)
 		{
