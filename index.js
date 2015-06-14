@@ -156,7 +156,7 @@ function calculateBoatMovement()
 
 	var scale = 0;
 	if (totalForce[0] > 0 || totalForce[1] > 0) {
-		scale = 0.2;
+		scale = 2;
 	}
 
 	boat.position[0] += x * scale;
