@@ -235,7 +235,7 @@ setInterval(function()
 		calculateBoatMovement();
 		pushUpdatesToClients();
 	}
-	if (boat != undefined)
+	if (boat != undefined && boat.position != undefined)
 		log("boat", boat.position[0], ' ', boat.position[1]);
 	else
 		log("boat undefined");
