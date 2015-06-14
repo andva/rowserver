@@ -155,7 +155,7 @@ function calculateBoatMovement()
 
 	var x = -sn;
 	var y = cs;
-
+	log('x' + x + ' y' + y);
 	boat.position[0] += x * 0.2;
 	boat.position[1] += y * 0.2;
 
