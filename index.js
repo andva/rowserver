@@ -19,7 +19,7 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 var boat = {
-	position : [0, 0],
+	pos : [0, 0],
 	rotation : 0,
 
 	reset : function() {
@@ -143,8 +143,8 @@ function calculateBoatMovement()
 		totalForce[0] += connections[i].row[0];
 		totalForce[1] += connections[i].row[1];
 	}
-	boat.position[0] += totalForce[0];
-	boat.position[1] += totalForce[1];
+	boat.pos[0] += totalForce[0];
+	boat.pos[1] += totalForce[1];
 
 	boat.rotation += totalForce[0] / 2.0;
 	if (boat.rotation < 0) {
@@ -166,7 +166,7 @@ function pushUpdatesToClients()
 	}
 	var jsonObj = JSON.stringify({
 		message_boatUpdate:{
-			boatPos : boat.position,
+			boatPos : boat.pos,
 			boatRot : boat.rotation}
 		});
 	for (var i = 0; i < connections.length; i++)
