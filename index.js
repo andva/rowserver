@@ -9,21 +9,21 @@ app.use(express.static(__dirname + "/"))
 var server = http.createServer(app)
 server.listen(port)
 
-console.log("http server listening on %d", port)
+log("http server listening on %d", port)
 
 var connections = [];
 
 var uuid = 0;
 
 var wss = new WebSocketServer({server: server})
-console.log("websocket server created")
+log("websocket server created")
 
 var boat = {
 	position : [0, 0],
 	rotation : 0,
 
 	reset : function() {
-		console.log("Resetting position");
+		log("Resetting position");
 		for (var i = 0; i < 2; i++)
 		{
 			boat.position[i] = 0;
@@ -89,7 +89,7 @@ function addPlayer(newConnection)
 			}
 		}));
 		connections.push(newConnection);
-		console.log('Adding player (' +game.uuid+ ')(Tot:' + connections.length +')');
+		log('Adding player (' +game.uuid+ ')(Tot:' + connections.length +')');
 		game.uuid += 1;
 	}
 }
@@ -135,7 +135,7 @@ function onMessage(connection)
 			if (message.applyForce.rowForce != undefined)
 				connection.rowForce = message.applyForce.rowForce;
 			else
-				log("Wrong size of row force (", message.applyForce.rowForce, ")");
+				log("Wrong size of row force (" + message.applyForce.rowForce + ")");
 		}
 	});
 }
