@@ -1,0 +1,7 @@
+applications:
+- disk_quota: 1024M
+  host: rowserver
+  name: rowserver
+  command: node index.js
+  path: .
+  memory: 128M

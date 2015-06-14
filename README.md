@@ -25,6 +25,17 @@ $ git push heroku master
 $ heroku open
 ```
 
+## Deploying to Bluemix
+
+Use the auto deploy button:
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/lorentzlasson/rowserver.git)
+
+or do it manually:
+
+```
+cf push
+```
+
 ## Documentation
 
 For more information about using Node.js on Heroku, see these Dev Center articles:
