@@ -56,7 +56,7 @@ function addPlayer(newConnection)
 		newConnection.nick = "UNKNOWN";
 		newConnection.rowForce = [0,0];
 
-		console.log('Adding player (' +game.uuid+ ')');
+		
 
 		var otherPlayers = [];
 		var names = [];
@@ -89,6 +89,7 @@ function addPlayer(newConnection)
 			}
 		}));
 		connections.push(newConnection);
+		console.log('Adding player (' +game.uuid+ ')(Tot:' + connections.length +')');
 		game.uuid += 1;
 	}
 }
