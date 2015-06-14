@@ -18,10 +18,6 @@ var uuid = 0;
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
-var ROW_NONE = 0;
-var ROW_LEFT_PADDLE = 1;
-var ROW_RIGHT_PADDLE = 2;
-
 var boat = {
 	pos : [0, 0],
 	rotation : 0,
@@ -132,28 +128,20 @@ function onMessage(connection)
 
 function calculateBoatMovement()
 {
-	var left = 0;
-	var right = 0;
-	var leftForce = [-1, 1];
-	var rightForce = [1, 1];
 	var totalForce = [0, 0];
-
 	for (var i = 0; i < connections.length; i++)
 	{
-		if (connections[i].row == ROW_LEFT_PADDLE)
-		{
-			right++;
-			totalForce[0] += right[0] / connections.length;
-			totalForce[1] += right[1] / connections.length;
-		}
-		else if (connections[i].row == ROW_RIGHT_PADDLE)
-		{
-			left++;
-			totalForce[0] += left[0] / connections.length;
-			totalForce[1] += left[1] / connections.length;
-		}
+		totalForce[0] += connections[i].row[0];
+		totalForce[1] += connections[i].row[1];
 	}
-	
+
+	boat.rotation += totalForce[0] / 2.0;
+	if (boat.rotation < 0) {
+		boat.rotation += 2 * Math.PI;
+	}
+	if (boat.rotation >= 2 * Math.PI) {
+		boat.rotation -= 2 * Math.PI;
+	}
 }
 
 function pushUpdatesToClients()
