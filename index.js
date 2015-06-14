@@ -53,8 +53,7 @@ function addPlayer(newConnection)
 	{
 		newConnection.uuid = game.uuid;
 		newConnection.nick = "UNKNOWN";
-		newConnection.rowForceLeft = [0,0];
-		newConnection.rowForceRight = [0,0];
+		newConnection.rowForce = [0,0];
 
 		console.log('Adding player (' +game.uuid+ ')');
 
@@ -122,13 +121,7 @@ function onMessage(connection)
 		var message = JSON.parse(data);
 		if (message.applyForce)
 		{
-			log('Row force!!');
-			connection.rowForceLeft = message.applyForce.rowForceLeft;
-			connection.rowForceRight = message.applyForce.rowForceRight;
-		}
-		if (message.asd == 1)
-		{
-			log('ROW!');
+			connection.rowForce = message.applyForce.rowForce;
 		}
 	});
 }
