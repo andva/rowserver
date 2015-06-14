@@ -116,6 +116,7 @@ function onCloseConnection(connection)
 		}
 		if (connections.length == 0)
 		{
+			boat.reset();
 			//activateState(RESTARTING);
 		}
 	});
@@ -197,8 +198,8 @@ var PLAYING = {
 var RESTARTING = {
 	name : "restarting",
 	activate : function(client) {
-		boat.reset();
-		activateState(IDLE);
+		//boat.reset();
+		//activateState(IDLE);
 	},
 
 	deactivate : function(client) {
