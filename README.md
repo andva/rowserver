@@ -28,7 +28,7 @@ $ heroku open
 ## Deploying to Bluemix
 
 Use the auto deploy button:
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/lorentzlasson/rowserver.git)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/andva/rowserver.git)
 
 or do it manually:
 
