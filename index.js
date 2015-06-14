@@ -126,6 +126,10 @@ function onMessage(connection)
 			connection.rowForce[0] = message.rowForceX;
 			connection.rowForce[1] = message.rowForceY;
 		}
+		if (message.asd == 1)
+		{
+			log('ROW!');
+		}
 	});
 	connection.on("message_applyForce", function(data) {
 		var message = JSON.parse(data);
