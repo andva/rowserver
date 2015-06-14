@@ -19,7 +19,7 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 var boat = {
-	pos : [0, 0],
+	position : [0, 0],
 	rotation : 0,
 
 	reset : function() {
@@ -145,7 +145,7 @@ function calculateBoatMovement()
 	}
 	boat.position[0] += totalForce[0];
 	boat.position[1] += totalForce[1];
-	
+
 	boat.rotation += totalForce[0] / 2.0;
 	if (boat.rotation < 0) {
 		boat.rotation += 2 * Math.PI;
