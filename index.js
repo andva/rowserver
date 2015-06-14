@@ -119,7 +119,7 @@ function onMessage(connection)
 {
 	connection.on("message", function(data) {
 		var message = JSON.parse(data);
-		log('msg:', message , " ", data);
+		log('msg:', message , ", ", data, ", ", message.rowForceX);
 		if (message.rowForceX)
 		{
 			log('Row force!!');
@@ -127,6 +127,12 @@ function onMessage(connection)
 			connection.rowForce[1] = message.rowForceY;
 		}
 	});
+	connection.on("message_applyForce", function(data) {
+		var message = JSON.parse(data);
+		log('msg_applyForce ', message.rowForce);
+		connection.rowForce[0] = message.rowForce[0];
+		connection.rowForce[1] = message.rowForce[1];
+	})
 }
 
 function calculateBoatMovement()
