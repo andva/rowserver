@@ -19,7 +19,7 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 var boat = {
-	pos : [0, 0],
+	position : [0, 0],
 	rotation : 0,
 
 	reset : function() {
@@ -60,7 +60,9 @@ function addPlayer(newConnection)
 
 		var otherPlayers = [];
 		var names = [];
-
+		/*if (boat == undefined || boat.position == undefined) {
+			boat 
+		}*/
 		// Tell others a new person connected
 		for (var i = 0; i < connections.length; i++)
 		{
