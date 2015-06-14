@@ -119,7 +119,10 @@ function onMessage(connection)
 {
 	connection.on("message", function(data) {
 		var message = JSON.parse(data);
-		log('msg:', message , ", ", data, ", ", message.rowForceX);
+		log('msg:', message);
+		log('data:', data);
+		log('rfx', message.rowForceX);
+		log('sad', message.asd);
 		if (message.rowForceX)
 		{
 			log('Row force!!');
@@ -130,12 +133,6 @@ function onMessage(connection)
 		{
 			log('ROW!');
 		}
-	});
-	connection.on("message_applyForce", function(data) {
-		var message = JSON.parse(data);
-		log('msg_applyForce ', message.rowForce);
-		connection.rowForce[0] = message.rowForce[0];
-		connection.rowForce[1] = message.rowForce[1];
 	});
 }
 
