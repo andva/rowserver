@@ -152,6 +152,7 @@ function calculateBoatMovement()
 	if (boat.rotation >= 2 * Math.PI) {
 		boat.rotation -= 2 * Math.PI;
 	}
+	connections[i].rowForce = [0, 0];
 }
 
 function pushUpdatesToClients()
