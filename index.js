@@ -121,6 +121,7 @@ function onMessage(connection)
 		var message = JSON.parse(data);
 		if (message.rowForce)
 		{
+			log('Row force!!');
 			connection.rowForce = message.rowForce;
 		}
 	});
