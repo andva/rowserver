@@ -183,7 +183,7 @@ function pushUpdatesToClients()
 }
 
 var PLAYING = {
-	name : "playing";
+	name : "playing",
 	activate : function(client) {
 				
 	},
@@ -194,7 +194,7 @@ var PLAYING = {
 };
 
 var RESTARTING = {
-	name : "restarting";
+	name : "restarting",
 	activate : function(client) {
 		boat.reset();
 		activateState(IDLE);
@@ -206,7 +206,7 @@ var RESTARTING = {
 }
 
 var IDLE = {
-	name : "idle";
+	name : "idle",
 	activate : function(client) {
 
 	},
