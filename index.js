@@ -75,7 +75,9 @@ function addPlayer(newConnection)
 			}
 		}
 
-	
+		if (connections.length == 0) {
+			activateState(PLAYING);
+		}
 		newConnection.send(JSON.stringify(
 		{
 			message_initPlayer:{
@@ -112,6 +114,10 @@ function onCloseConnection(connection)
 				}));
 			}
 		}
+		if (connections.length == 0)
+		{
+			activateState(RESTARTING);
+		}
 	});
 }
 
@@ -134,7 +140,8 @@ function calculateBoatMovement()
 		var leftSide = connections[i].rowForce[0];
 		var rightSide = connections[i].rowForce[1];
 		totalForce[0] += rightSide - leftSide;
-		totalForce[1] += 0.2;
+		if (rightSide > 0 || leftSide > 0)
+			totalForce[1] += 0.2;
 	}
 	/*boat.pos[0] += totalForce[0];
 	boat.pos[1] += totalForce[1];*/
@@ -189,7 +196,16 @@ var PLAYING = {
 var RESTARTING = {
 	activate : function(client) {
 		boat.reset();
-		// Send info to players to reset
+		activateState(IDLE);
+	},
+
+	deactivate : function(client) {
+
+	}
+}
+
+var IDLE = {
+	activate : function(client) {
 
 	},
 
