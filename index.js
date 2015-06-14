@@ -158,7 +158,7 @@ function calculateBoatMovement()
 	boat.acceleration[0] += totalForce[0] / (connections.length * 5.0);
 	boat.acceleration[1] += totalForce[1] / (connections.length * 5.0);
 
-	//boat.rotation += boat.acceleration[0];
+	boat.rotation += totalForce[0];//boat.acceleration[0];
 
 	var cs = Math.cos(boat.rotation);
 	var sn = Math.sin(boat.rotation);
