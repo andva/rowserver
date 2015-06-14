@@ -26,7 +26,7 @@ var boat = {
 		console.log("Resetting position");
 		for (var i = 0; i < 2; i++)
 		{
-			pos[i] = 0;
+			position[i] = 0;
 		}
 		rotation = 0;
 	}
