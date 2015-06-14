@@ -139,8 +139,8 @@ function calculateBoatMovement()
 	var totalForce = [0, 0];
 	for (var i = 0; i < connections.length; i++)
 	{
-		totalForce[0] += connections[i].row[0];
-		totalForce[1] += connections[i].row[1];
+		totalForce[0] += connections[i].rowForce[0];
+		totalForce[1] += connections[i].rowForce[1];
 	}
 	boat.pos[0] += totalForce[0];
 	boat.pos[1] += totalForce[1];
