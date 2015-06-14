@@ -132,6 +132,10 @@ function onMessage(connection)
 			else
 				log("Wrong size of row force (" + message.applyForce.rowForce + ")");
 		}
+		if (message.resetBoat)
+		{
+			boat.reset();
+		}
 	});
 }
 
