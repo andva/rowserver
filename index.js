@@ -137,7 +137,7 @@ function calculateBoatMovement()
 	boat.pos[0] += totalForce[0];
 	boat.pos[1] += totalForce[1];
 
-	boat.rotation += totalForce[0] / connections.length;
+	boat.rotation += totalForce[0] / (connections.length * 5.0);
 	if (boat.rotation < 0) {
 		boat.rotation += 2 * Math.PI;
 	}
