@@ -148,8 +148,17 @@ function calculateBoatMovement()
 		if (rightSide > 0 || leftSide > 0)
 			totalForce[1] += 0.2;
 	}
-	boat.position[1] += totalForce[1];
 	boat.rotation += totalForce[0] / (connections.length * 12.0);
+
+	var cs = cos(boat.rotation);
+	var sn = sin(boat.rotation);
+
+	var x = -sn;
+	var y = cs;
+
+	boat.position[0] += x * 0.2;
+	boat.position[1] += y * 0.2;
+
 	if (boat.rotation < 0) {
 		boat.rotation += 2 * Math.PI;
 	}
