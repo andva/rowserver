@@ -58,9 +58,7 @@ function addPlayer(newConnection)
 
 		var otherPlayers = [];
 		var names = [];
-		/*if (boat == undefined || boat.position == undefined) {
-			boat 
-		}*/
+
 		// Tell others a new person connected
 		for (var i = 0; i < connections.length; i++)
 		{
@@ -155,9 +153,14 @@ function calculateBoatMovement()
 
 	var x = -sn;
 	var y = cs;
-	log('x' + x + ' y' + y);
-	boat.position[0] += x * 0.2;
-	boat.position[1] += y * 0.2;
+
+	var scale = 0;
+	if (totalForce[0] > 0 || totalForce[1] > 0) {
+		scale = 0.2;
+	}
+
+	boat.position[0] += x * scale;
+	boat.position[1] += y * scale;
 
 	if (boat.rotation < 0) {
 		boat.rotation += 2 * Math.PI;
