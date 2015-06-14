@@ -185,7 +185,7 @@ function pushUpdatesToClients()
 	}
 	var jsonObj = JSON.stringify({
 		message_boatUpdate:{
-			boatPos : boat.pos,
+			boatPos : boat.position,
 			boatRot : boat.rotation}
 		});
 	for (var i = 0; i < connections.length; i++)
