@@ -40,7 +40,7 @@ var game = {
 
 // Activates a state on the server
 function activateState(state) {
-    console.log('switching from', game.state.name, 'to', state.name)
+    //console.log('switching from', game.state.name, 'to', state.name)
     game.state.deactivate();
     game.state = state;
     state.activate();
