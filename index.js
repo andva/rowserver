@@ -152,15 +152,15 @@ function calculateBoatMovement()
 	var sn = Math.sin(boat.rotation);
 
 	var x = sn;
-	var y = -cs;
+	var y = cs;
 
 	var scale = 0;
 	if (totalForce[0] > 0 || totalForce[1] > 0) {
 		scale = 2;
 	}
 
-	boat.position[0] += x * scale;
-	boat.position[1] += y * scale;
+	boat.position[0] -= x * scale;
+	boat.position[1] -= y * scale;
 
 	if (boat.rotation < 0) {
 		boat.rotation += 2 * Math.PI;
