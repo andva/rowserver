@@ -206,7 +206,7 @@ setInterval(function()
 		calculateBoatMovement();
 		pushUpdatesToClients();
 	}
-}, 33);
+}, 500);
 
 // Run code with a given interval
 function log(msg) {
