@@ -127,7 +127,7 @@ function onMessage(connection)
 		var message = JSON.parse(data);
 		if (message.applyForce)
 		{
-			if (message.applyForce.rowForce.length == 2)
+			if (message.applyForce.rowForce)
 				connection.rowForce = message.applyForce.rowForce;
 			else
 				log("Wrong size of row force (", message.applyForce.rowForce, ")");
