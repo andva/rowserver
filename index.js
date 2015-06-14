@@ -56,8 +56,6 @@ function addPlayer(newConnection)
 		newConnection.nick = "UNKNOWN";
 		newConnection.rowForce = [0,0];
 
-		
-
 		var otherPlayers = [];
 		var names = [];
 		/*if (boat == undefined || boat.position == undefined) {
@@ -121,7 +119,6 @@ function onCloseConnection(connection)
 		if (connections.length == 0)
 		{
 			boat.reset();
-			//activateState(RESTARTING);
 		}
 	});
 }
@@ -152,7 +149,7 @@ function calculateBoatMovement()
 			totalForce[1] += 0.2;
 	}
 	boat.position[1] -= totalForce[1];
-	boat.rotation += totalForce[0] / (connections.length * 5.0);
+	boat.rotation += totalForce[0] / (connections.length * 12.0);
 	if (boat.rotation < 0) {
 		boat.rotation += 2 * Math.PI;
 	}
