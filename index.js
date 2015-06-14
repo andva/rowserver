@@ -15,13 +15,17 @@ var connections = [];
 
 var uuid = 0;
 
+
+
 var wss = new WebSocketServer({server: server})
 log("websocket server created")
+
+var 
 
 var boat = {
 	position : [0, 0],
 	rotation : 0,
-
+	acceleration : 0,
 	reset : function() {
 		log("Resetting position");
 		for (var i = 0; i < 2; i++)
@@ -31,7 +35,6 @@ var boat = {
 		boat.rotation = 0;
 	}
 }
-
 
 // Storing game states
 var game = {
@@ -141,6 +144,9 @@ function onMessage(connection)
 
 function calculateBoatMovement()
 {
+	boat.acceleration[0] *= 0.4;
+	boat.acceleration[1] *= 0.4;
+
 	var totalForce = [0, 0];
 	for (var i = 0; i < connections.length; i++)
 	{
@@ -150,13 +156,19 @@ function calculateBoatMovement()
 		if (rightSide > 0 || leftSide > 0)
 			totalForce[1] += 0.2;
 	}
-	boat.rotation += totalForce[0] / (connections.length * 5.0);
+
+	boat.acceleration[0] += totalForce[0] / (connections.length * 5.0);
+	boat.acceleration[1] += totalForce[1] / (connections.length * 5.0);
+
+	boat.rotation += boat.acceleration[0];
 
 	var cs = Math.cos(boat.rotation);
 	var sn = Math.sin(boat.rotation);
 
 	var x = sn;
 	var y = cs;
+
+
 
 	var scale = 0;
 	if (totalForce[0] > 0 || totalForce[1] > 0) {
@@ -251,7 +263,7 @@ setInterval(function()
 		calculateBoatMovement();
 		pushUpdatesToClients();
 	}
-}, 100);
+}, 33);
 
 // Run code with a given interval
 function log(msg) {
